@@ -16,6 +16,29 @@ async function main() {
     });
   }
 
+  await prisma.ticketType.createMany({
+    data: [
+      {
+        name: "remoto",
+        price: 10000,
+        isRemote: true,
+        includesHotel: false
+      },
+      {
+        name: "presencial",
+        price: 25000,
+        isRemote: false,
+        includesHotel: false
+      },
+      {
+        name: "com hotel",
+        price: 60000,
+        isRemote: false,
+        includesHotel: true
+      }
+    ],
+  });
+
   console.log({ event });
 }
 
