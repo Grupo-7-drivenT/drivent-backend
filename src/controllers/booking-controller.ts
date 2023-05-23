@@ -21,14 +21,16 @@ export async function bookingRoom(req: AuthenticatedRequest, res: Response, next
   try {
     const { userId } = req;
     const { roomId } = req.body as Record<string, number>;
+    console.log(roomId, 'idroom');
 
-    const booking = await bookingService.bookingRoomById(userId, roomId);
+    const booking = await bookingService.bookingRoomById(+userId, +roomId);
 
     return res.status(httpStatus.OK).send({
       bookingId: booking.id,
     });
   } catch (error) {
     next(error);
+    console.log(error);
   }
 }
 
