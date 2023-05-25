@@ -154,8 +154,8 @@ async function main() {
           name: 'Redes Neurais Artificiais em Python',
           capacity: 3,
           location: 'Sala de Workshop',
-          startDateTime: new Date('2023-03-29T09:00-0300'),
-          endDateTime: new Date('2023-03-29T10:00:00-0300'),
+          startDateTime: new Date('2023-05-29T09:00-0300'),
+          endDateTime: new Date('2023-05-29T10:00:00-0300'),
         },
       ],
     });
