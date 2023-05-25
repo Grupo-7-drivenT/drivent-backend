@@ -16,6 +16,7 @@ model User {
   Booking    Booking[]
   Enrollment Enrollment?
   Session    Session[]
+  Matriculation Matriculation[]
 }
 
 model Session {
@@ -140,9 +141,10 @@ model Activity {
   id            Int      @id @default(autoincrement())
   name          String
   capacity      Int
-  locationId    Int
+  location      String
   startDateTime DateTime
   endDateTime   DateTime
+  Matriculation Matriculation[]
 }
 
 model Matriculation {
@@ -150,11 +152,8 @@ model Matriculation {
   userId     Int
   activityId Int
   createdAt  DateTime @default(now())
-}
-
-model Sectional {
-  id   Int    @id(map: "Location_pkey") @default(autoincrement())
-  name String
+  User       User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Activity   Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
 }
 
 enum TicketStatus {

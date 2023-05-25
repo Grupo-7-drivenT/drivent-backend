@@ -3,7 +3,7 @@ CREATE TABLE "Activity" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "capacity" INTEGER NOT NULL,
-    "locationId" INTEGER NOT NULL,
+    "location" TEXT NOT NULL,
     "startDateTime" TIMESTAMP(3) NOT NULL,
     "endDateTime" TIMESTAMP(3) NOT NULL,
 
@@ -20,10 +20,8 @@ CREATE TABLE "Matriculation" (
     CONSTRAINT "Matriculation_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "Sectional" (
-    "id" SERIAL NOT NULL,
-    "name" TEXT NOT NULL,
+-- AddForeignKey
+ALTER TABLE "Matriculation" ADD CONSTRAINT "Matriculation_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
-    CONSTRAINT "Location_pkey" PRIMARY KEY ("id")
-);
+-- AddForeignKey
+ALTER TABLE "Matriculation" ADD CONSTRAINT "Matriculation_activityId_fkey" FOREIGN KEY ("activityId") REFERENCES "Activity"("id") ON DELETE CASCADE ON UPDATE CASCADE;

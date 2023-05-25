@@ -97,63 +97,63 @@ async function main() {
         {
           name: 'Mastering TypeScript - 2023 Edition',
           capacity: 130,
-          locationId: 3,
+          location: 'Sala de Workshop',
           startDateTime: new Date('2023-05-31T09:00-0300'),
           endDateTime: new Date('2023-05-31T10:00:00-0300'),
         },
         {
           name: 'React Native e Typescript: Criação de Apps Android e iOS',
           capacity: 70,
-          locationId: 2,
+          location: 'Auditório Lateral',
           startDateTime: new Date('2023-05-29T10:00:00-0300'),
           endDateTime: new Date('2023-05-29T12:00:00-0300'),
         },
         {
           name: 'Design Patterns em TypeScript Entendendo Padrões de Projetos',
           capacity: 52,
-          locationId: 3,
+          location: 'Sala de Workshop',
           startDateTime: new Date('2023-05-30T09:00-0300'),
           endDateTime: new Date('2023-05-30T12:00:00-0300'),
         },
         {
           name: 'Design Patterns em TypeScript Entendendo Padrões de Projetos',
           capacity: 31,
-          locationId: 2,
+          location: 'Auditório Lateral',
           startDateTime: new Date('2023-05-31T09:00-0300'),
           endDateTime: new Date('2023-05-31T10:00:00-0300'),
         },
         {
           name: 'Certificação Amazon AWS Solutions Architect Associate 2023',
           capacity: 13,
-          locationId: 1,
+          location: 'Auditório Principal',
           startDateTime: new Date('2023-05-29T14:00:00-0300'),
           endDateTime: new Date('2023-05-29T17:00:00-0300'),
         },
         {
           name: 'Arquitetura de Redes',
           capacity: 10,
-          locationId: 1,
+          location: 'Auditório Principal',
           startDateTime: new Date('2023-05-30T09:00-0300'),
           endDateTime: new Date('2023-05-30T12:00:00-0300'),
         },
         {
           name: 'Guia Cisco CCNA para Iniciantes 2023',
           capacity: 5,
-          locationId: 2,
+          location: 'Auditório Lateral',
           startDateTime: new Date('2023-05-30T09:00-0300'),
           endDateTime: new Date('2023-05-30T12:00:00-0300'),
         },
         {
           name: 'Linguagem R: do zero absoluto ao domínio em menos de 4 horas',
           capacity: 10,
-          locationId: 1,
+          location: 'Auditório Principal',
           startDateTime: new Date('2023-05-31T09:00-0300'),
           endDateTime: new Date('2023-05-31T12:30:00-0300'),
         },
         {
           name: 'Redes Neurais Artificiais em Python',
           capacity: 3,
-          locationId: 3,
+          location: 'Sala de Workshop',
           startDateTime: new Date('2023-03-29T09:00-0300'),
           endDateTime: new Date('2023-03-29T10:00:00-0300'),
         },
@@ -161,12 +161,6 @@ async function main() {
     });
   }
 
-  let sectional = await prisma.sectional.findFirst();
-  if (!sectional) {
-    await prisma.sectional.createMany({
-      data: [{ name: 'Auditório Principal' }, { name: 'Auditório Lateral' }, { name: 'Sala de Workshop' }],
-    });
-  }
   console.log({ event });
 }
 
