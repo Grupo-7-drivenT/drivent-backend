@@ -8,8 +8,18 @@ async function findActivities() {
   });
 }
 
+async function postMatriculation(userId: number, activityId: number) {
+  await prisma.matriculation.create({
+    data: {
+      userId,
+      activityId,
+    },
+  });
+}
+
 const activityRepository = {
   findActivities,
+  postMatriculation,
 };
 
 export default activityRepository;
