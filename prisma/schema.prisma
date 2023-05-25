@@ -145,6 +145,7 @@ model Activity {
   startDateTime DateTime
   endDateTime   DateTime
   Matriculation Matriculation[]
+  @@index([startDateTime])
 }
 
 model Matriculation {
