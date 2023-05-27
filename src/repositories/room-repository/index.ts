@@ -5,6 +5,9 @@ async function findAllByHotelId(hotelId: number) {
     where: {
       hotelId,
     },
+    include: {
+      Booking: true,
+    },
   });
 }
 
