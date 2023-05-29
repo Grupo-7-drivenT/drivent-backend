@@ -16,7 +16,7 @@ describe('findActivitiesService', () => {
       { id: 2, name: 'Activity 2', capacity: 5 },
     ];
 
-    activityRepository.findActivities.mockResolvedValue(activities);
+    activityRepository.findActivities = jest.fn().mockResolvedValue(activities);
 
     const result = await serviceActivity.findActivitiesService();
 
@@ -25,7 +25,7 @@ describe('findActivitiesService', () => {
   });
 
   it('should throw notFoundError if no activities are found', async () => {
-    activityRepository.findActivities.mockResolvedValue([]);
+    activityRepository.findActivities = jest.fn().mockResolvedValue([]);
 
     await expect(serviceActivity.findActivitiesService()).rejects.toEqual(notFoundError());
     expect(activityRepository.findActivities).toHaveBeenCalled();
@@ -77,8 +77,8 @@ describe('postMatriculationService', () => {
     const enrollment = { id: 1, userId, activityId };
     const ticket = { id: 1, status: 'PENDING', TicketType: { isRemote: false } };
 
-    enrollmentRepository.findWithAddressByUserId.mockResolvedValue(enrollment);
-    ticketsRepository.findTicketByEnrollmentId.mockResolvedValue(ticket);
+    enrollmentRepository.findWithAddressByUserId = jest.fn().mockResolvedValue(enrollment);
+    ticketsRepository.findTicketByEnrollmentId = jest.fn().mockResolvedValue(ticket);
 
     await expect(serviceActivity.postMatriculationService(userId, activityId)).rejects.toEqual(forBiddenError());
     expect(enrollmentRepository.findWithAddressByUserId).toHaveBeenCalledWith(userId);
